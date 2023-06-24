@@ -1,23 +1,21 @@
-* {
+const string = `
+.skin *{
     box-sizing: border-box;
     margin: 0;
     padding: 0
 }
 
-*:before {
+.skin *:before {
     box-sizing: border-box
 }
 
-*:after {
+.skin *:after {
     box-sizing: border-box
-}
-
-body {
-    background: #ffe600;
-    min-height: 100vh;
 }
 
 .skin {
+    background: #ffe600;
+    min-height: 50vh;
     position: relative;
 
 }
@@ -201,4 +199,5 @@ body {
     transform: translateX(180px);
     border-radius: 50%;
 }
-
+`
+export default  string

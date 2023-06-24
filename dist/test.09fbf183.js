@@ -103,73 +103,78 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   // Override the current require with this new one
   return newRequire;
-})({"..\\..\\..\\..\\AppData\\Local\\Yarn\\Data\\global\\node_modules\\parcel\\src\\builtins\\bundle-url.js":[function(require,module,exports) {
-var bundleURL = null;
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
-  }
+})({"css.js":[function(require,module,exports) {
+"use strict";
 
-  return bundleURL;
-}
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var string = "\n.skin *{\n    box-sizing: border-box;\n    margin: 0;\n    padding: 0\n}\n\n.skin *:before {\n    box-sizing: border-box\n}\n\n.skin *:after {\n    box-sizing: border-box\n}\n\n.skin {\n    background: #ffe600;\n    min-height: 50vh;\n    position: relative;\n\n}\n\n.nose {\n    border: 10px solid black;\n    border-color: black transparent transparent;\n    border-bottom: none;\n    width: 0;\n    height: 0;\n    position: absolute;\n    left: 50%;\n    top: 145px;\n    margin-left: -10px;\n    z-index: 5;\n}\n\n@keyframes wave {\n\n    0% {\n        transform: rotate(0deg);\n    }\n    33% {\n        transform: rotate(6deg);\n    }\n    66% {\n        transform: rotate(-6deg);\n    }\n    100% {\n        transform: rotate(0deg);\n    }\n}\n\n.nose:hover{\n    transform-origin: center bottom;\n    /* \u4EE5nose\u6700\u4E0B\u4E3A\u57FA\u51C6*/\n    animation: wave 300ms infinite linear;\n}\n\n\n.yuan {\n    position: absolute;\n    width: 20px;\n    height: 6px;\n    top: -16px;\n    left: -10px;\n    border-radius: 10px 10px 0 0;\n    background: black;\n}\n\n.eye {\n    border: 2px solid #2e2e2e;\n    width: 64px;\n    height: 64px;\n    position: absolute;\n    left: 50%;\n    top: 100px;\n    margin-left: -32px;\n    background: #2e2e2e;\n    border-radius: 50%;\n}\n\n.eye::before {\n    content: '';\n    display: block;\n    border: 3px solid #000;\n    width: 28px;\n    height: 28px;\n    background: #fff;\n    border-radius: 50%;\n    position: relative;\n    left: 6px;\n    top: 3px;\n}\n\n.eye.left {\n    transform: translateX(-100px);\n}\n\n.eye.right {\n    transform: translateX(100px);\n}\n\n.mouth {\n\n    width: 200px;\n    height: 200px;\n    position: absolute;\n    left: 50%;\n    margin-left: -100px;\n    top: 170px;\n\n}\n\n.mouth .up-mouth {\n    position: relative;\n    top: -10px;\n    z-index: 2;\n}\n\n.mouth .up-mouth .lip {\n    border: 3px solid black;\n    height: 30px;\n    width: 100px;\n    border-top-color: transparent;\n    position: absolute;\n    background: #ffe600;\n}\n\n.mouth .up-mouth .left-lip {\n\n    border-radius: 0 0 0 50px;\n    border-right-color: transparent;\n    transform: rotate(-15deg);\n    left: 50%;\n    margin-left: -48%;\n}\n\n.mouth .up-mouth .right-lip {\n    border-radius: 0 0 50px 0;\n    border-top-color: transparent;\n    border-left-color: transparent;\n    transform: rotate(15deg);\n    right: 50%;\n    margin-right: -48%;\n}\n\n\n.mouth .down-mouth {\n    height: 180px;\n    position: absolute;\n    top: 5px;\n    width: 100%;\n    overflow: hidden;\n}\n\n.mouth .down-mouth .yuan1 {\n    border: 3px solid black;\n    width: 150px;\n    height: 1000px;\n    position: absolute;\n    bottom: 0;\n    left: 50%;\n    margin-left: -75px;\n    border-radius: 75px/300px;\n    background: #9b000a;\n    overflow: hidden;\n}\n\n.mouth .down-mouth .yuan1 .yuan2 {\n\n    width: 200px;\n    height: 300px;\n    position: absolute;\n    background: #ff485f;\n    bottom: -150px;\n    left: 50%;\n    margin-left: -100px;\n    border-radius: 100px;\n}\n\n.face {\n    position: absolute;\n    border: 3px solid black;\n    width: 88px;\n    height: 88px;\n    left: 50%;\n    margin-left: -44px;\n    top: 200px;\n    z-index: 3;\n    background: #ff0000;\n\n}\n\n.face.left {\n    transform: translateX(-180px);\n    border-radius: 50%;\n}\n\n.face.right {\n    transform: translateX(180px);\n    border-radius: 50%;\n}\n";
+exports.default = string;
+},{}],"test.js":[function(require,module,exports) {
+'use strict';
 
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp):\/\/[^)\n]+/g);
-    if (matches) {
-      return getBaseURL(matches[0]);
+var _css = require('./css');
+
+var _css2 = _interopRequireDefault(_css);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var n = 1;
+console.log('test');
+demo.innerText = _css2.default.substring(0, n);
+demo2.innerHTML = _css2.default.substring(0, n);
+
+var time = 100;
+
+var run = function run() {
+    n += 1;
+    if (n > _css2.default.length) {
+        window.clearInterval(id);
+        return;
     }
-  }
+    demo.innerText = _css2.default.substring(0, n);
+    demo2.innerHTML = _css2.default.substring(0, n);
+    demo.scrollTop = demo.scrollHeight;
+};
+var id = setInterval(function () {
+    run();
+}, time);
 
-  return '/';
-}
+btnPause.onclick = function () {
+    window.clearInterval(id);
+};
 
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp):\/\/.+)\/[^/]+$/, '$1') + '/';
-}
+btnPlay.onclick = function () {
+    id = setInterval(function () {
+        run();
+    }, time);
+};
 
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],"..\\..\\..\\..\\AppData\\Local\\Yarn\\Data\\global\\node_modules\\parcel\\src\\builtins\\css-loader.js":[function(require,module,exports) {
-var bundle = require('./bundle-url');
+btnSlow.onclick = function () {
+    window.clearInterval(id);
+    time = 300;
+    id = setInterval(function () {
+        run();
+    }, time);
+};
 
-function updateLink(link) {
-  var newLink = link.cloneNode();
-  newLink.onload = function () {
-    link.remove();
-  };
-  newLink.href = link.href.split('?')[0] + '?' + Date.now();
-  link.parentNode.insertBefore(newLink, link.nextSibling);
-}
+btnNormal.onclick = function () {
+    window.clearInterval(id);
+    time = 100;
+    id = setInterval(function () {
+        run();
+    }, time);
+};
 
-var cssTimeout = null;
-function reloadCSS() {
-  if (cssTimeout) {
-    return;
-  }
-
-  cssTimeout = setTimeout(function () {
-    var links = document.querySelectorAll('link[rel="stylesheet"]');
-    for (var i = 0; i < links.length; i++) {
-      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
-        updateLink(links[i]);
-      }
-    }
-
-    cssTimeout = null;
-  }, 50);
-}
-
-module.exports = reloadCSS;
-},{"./bundle-url":"..\\..\\..\\..\\AppData\\Local\\Yarn\\Data\\global\\node_modules\\parcel\\src\\builtins\\bundle-url.js"}],"style.css":[function(require,module,exports) {
-
-var reloadCSS = require('_css_loader');
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"..\\..\\..\\..\\AppData\\Local\\Yarn\\Data\\global\\node_modules\\parcel\\src\\builtins\\css-loader.js"}],"..\\..\\..\\..\\AppData\\Local\\Yarn\\Data\\global\\node_modules\\parcel\\src\\builtins\\hmr-runtime.js":[function(require,module,exports) {
+btnFast.onclick = function () {
+    window.clearInterval(id);
+    time = 0;
+    id = setInterval(function () {
+        run();
+    }, time);
+};
+},{"./css":"css.js"}],"..\\..\\..\\..\\AppData\\Local\\Yarn\\Data\\global\\node_modules\\parcel\\src\\builtins\\hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -198,7 +203,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '59976' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '60855' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -339,4 +344,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},["..\\..\\..\\..\\AppData\\Local\\Yarn\\Data\\global\\node_modules\\parcel\\src\\builtins\\hmr-runtime.js"], null)
+},{}]},{},["..\\..\\..\\..\\AppData\\Local\\Yarn\\Data\\global\\node_modules\\parcel\\src\\builtins\\hmr-runtime.js","test.js"], null)
+//# sourceMappingURL=/test.09fbf183.map
