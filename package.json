@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "build":  "rm -rf dist && parcel build src/test.html --no-minify --public-url ./"
+  },
+  "name": "Pikachu - Pro",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Xin-hai/Pikachu-Pro.git",
+  "author": "Xin-hai <aa1940358283@163.com>",
+  "license": "MIT"
+}
