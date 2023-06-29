@@ -1,7 +1,5 @@
-# Pikachu-Pro
-可爱皮卡丘预览链接：
- [可爱皮卡丘](https://xin-hai.github.io/Pikachu-Pro/dist/test.html)
-
+# Pikachu-Pro 可爱皮卡丘
+# 预览链接：[可爱皮卡丘](https://xin-hai.github.io/Pikachu-Pro/dist/test.html)
 # yarn init -y 命令
 初始化package.json
 
